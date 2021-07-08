@@ -18,11 +18,7 @@ defmodule WordCount do
     #end)
     #|> Enum.filter(fn w -> w != "" end)
     |> Enum.reduce(%{}, fn ([w], acc) ->
-      if acc[w] != nil do
-        Map.put(acc, w, acc[w] + 1)
-      else
-        Map.put_new(acc, w, 1)
-      end
+      Map.update(acc, w, 1, &(&1 + 1))
     end)
     #|> Enum.map(fn {w, count} ->
     #  {Enum.join(for <<c::utf8 <- w>>, do: <<c::utf8>>), count}
