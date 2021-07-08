@@ -21,7 +21,7 @@ defmodule RomanNumerals do
   """
   @spec numeral(pos_integer) :: String.t
   def numeral(number) do
-    numeral number, ""
+    numeral(number, "")
   end
 
   @spec numeral(pos_integer, String.t) :: String.t
@@ -29,7 +29,7 @@ defmodule RomanNumerals do
   defp numeral(number, string) do
     {roman_number, roman_letter} =
       Enum.find(@roman_numerals, fn ({roman_n, _}) -> number >= roman_n end)
-    numeral number - roman_number, "#{string}#{roman_letter}"
+    numeral(number - roman_number, "#{string}#{roman_letter}")
   end
 
 end
