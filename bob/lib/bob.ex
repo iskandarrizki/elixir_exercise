@@ -14,5 +14,5 @@ defmodule Bob do
   defp is_empty?(_str), do: false
   defp is_shouting?(str), do: String.upcase(str) == str and String.match?(str, ~r/\p{L}/)
   defp is_question?(str), do: String.ends_with?(str, "?")
-  defp is_shouting_question?(str), do: String.ends_with?(str, "?") and String.upcase(str) == str and String.match?(str, ~r/\p{L}/)
+  defp is_shouting_question?(str), do: is_shouting?(str) and is_question?(str)
 end
